@@ -9,7 +9,7 @@ export function Signup(){
     const singup= async (e)=>{
         e.preventDefault();
         console.log(e)
-        const response = await fetch('https://scaling-engine-qjg4pw975jphxj67-3001.app.github.dev/api/signup',{
+        const response = await fetch('https://curly-succotash-5jprxw4g7qr377pr-3001.app.github.dev/api/signup',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, password})
@@ -21,6 +21,7 @@ export function Signup(){
 
     }
     console.log(email)
+    console.log(password)
     return (
         <div>
             <div>
@@ -31,8 +32,8 @@ export function Signup(){
                     <div>                
                         <label className="h5" htmlFor="email">Email</label>
                         <input className="form-control mb-4" type="email" id="email" onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
-                        <label className="h5" htmlFor="password" onChange={(e)=>setPassword(e.target.value)} placeholder='Password'>Password</label>
-                        <input className="form-control mb-4" type="password" id="password" />
+                        <label className="h5" htmlFor="password"  placeholder='Password'>Password</label>
+                        <input className="form-control mb-4" type="password" id="password" onChange={(e)=>setPassword(e.target.value)}/>
                     </div>
                     <div className='d-flex justify-content-evenly'>
                         <button className='btn btn-secondary'>Cancel</button>
