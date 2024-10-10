@@ -13,13 +13,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			isLogin: false,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
+			singup: (email, password) => {
+        		const response = fetch('https://curly-succotash-5jprxw4g7qr377pr-3001.app.github.dev/api/signup',{
+            	method: 'POST',
+            	headers: {'Content-Type': 'application/json'},
+            	body: JSON.stringify({email, password})
+        		})
+        		if (response.ok){
+            	console.log('user created')}
+			},
+			login:(email, password)=>{
+				const bodyRequest= {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ email, password })
+				}
+				fetch('https://curly-succotash-5jprxw4g7qr377pr-3001.app.github.dev/api/login',bodyRequest)
+				.then(response =>response.json())
+				.then(data=>{
+					localStorage.setItem("token", data.access_token)
+					console.log(data.access_token)
+				})
+				setStore({isLogin:true})
+			},
+			logout: () => {
+				localStorage.removeItem("token")
+				setStore({isLogin:false})
+			},
+
 
 			getMessage: async () => {
 				try{
