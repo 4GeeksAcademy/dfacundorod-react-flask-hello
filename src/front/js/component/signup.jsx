@@ -17,12 +17,9 @@ export function Signup(){
     console.log(email)
     console.log(password)
     return (
-        <div>
-            <div>
-                <div className='container d-flex justify-content-center my-3'>
-                    <h1>Singup!</h1>
-                </div>
-                <form onSubmit={singup} className='container col-3' >
+        <div className='d-flex align-items-center justify-content-center h-75'>
+                <h1 className='container text-end col-4 me-1 text-success'>Singup!</h1>
+                <form onSubmit={singup} className='container col-4 ms-2' >
                     <div>                
                         <label className="h5" htmlFor="email">Email</label>
                         <input className="form-control mb-4" type="email" id="email" onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
@@ -34,7 +31,6 @@ export function Signup(){
                         <button className='btn btn-success'>Signup!</button>
                     </div>
                 </form>
-            </div>
         </div>
     )
 }

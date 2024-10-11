@@ -12,6 +12,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Signup } from "./component/signup.jsx";
 import { Login } from "./component/login.jsx";
+import { Private } from "./component/private.jsx";
 
 //create your first component
 const Layout = () => {
@@ -22,16 +23,15 @@ const Layout = () => {
     if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
 
     return (
-        <div>
+        <div className="bg-light h-100">
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
                     
                     <Routes>
                         <Route element={<Login />} path='/'/>
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Signup />} path="/singup"/>
+                        <Route element={<Private />} path="/private"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
