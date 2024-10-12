@@ -42,14 +42,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch('https://curly-succotash-5jprxw4g7qr377pr-3001.app.github.dev/api/login',bodyRequest)
 				.then(response =>response.json())
 				.then(data=>{
-					localStorage.setItem("token", data.access_token)
+					sessionStorage.setItem("token", data.access_token)
 					console.log(data.access_token)
 				})
 				setStore({isLogin:true})
 			},
 			logout: () => {
-				localStorage.removeItem("token")
+				sessionStorage.removeItem("token")
 				setStore({isLogin:false})
+			},
+			setLogin:(status)=>{
+				setStore({isLogin: status})
 			},
 
 

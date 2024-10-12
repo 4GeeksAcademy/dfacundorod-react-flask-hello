@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { useContext } from 'react/cjs/react.development'
 import { Context } from '../store/appContext'
 
-
-
-export function Login(){
-
+const TokenReady=()=>{
+    return(<Navigate to='/private'  />)
+}
+const TokenNoReady=()=>{
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
     const navigate = useNavigate()
@@ -38,4 +38,14 @@ export function Login(){
             
         </div>
     )
+}
+export function Login(){
+    const {store, actions} = useContext(Context)
+    useEffect(()=>{
+        if(sessionStorage.getItem('token')){
+            actions.setLogin(true)
+        }},[actions])
+    return (<>
+        {sessionStorage.getItem('token') ? <TokenReady/> : <TokenNoReady/>}
+    </>)
 }

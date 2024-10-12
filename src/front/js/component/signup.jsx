@@ -16,6 +16,7 @@ export function Signup(){
     }
     console.log(email)
     console.log(password)
+
     return (
         <div className='d-flex align-items-center justify-content-center h-75'>
                 <h1 className='container text-end col-4 me-1 text-success'>Singup!</h1>
